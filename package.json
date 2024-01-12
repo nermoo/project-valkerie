@@ -1,5 +1,6 @@
 {
   "name": "reactcicd",
+  "homepage": "https://nermoo.github.io/project-valkerie",
   "private": true,
   "version": "0.0.0",
   "type": "module",
