@@ -5,7 +5,7 @@ name: valkerie CI
 
 on:
   push:
-    branches: [ "main,dev,gh-pages" ]
+    branches: [ "main","dev","gh-pages" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
