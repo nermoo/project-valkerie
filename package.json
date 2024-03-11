@@ -10,7 +10,10 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy:release": "echo 'Deploying for release' && npm run build && main -d dist",
+    "deploy:development": "echo 'Deploying for development' && npm run build && dev -d dist",
+    "deploy:github-pages": "echo 'Deploying for GitHub Pages' && npm run build && gh-pages -d dist"
+
   },
   "dependencies": {
     "antd": "^5.10.0",
