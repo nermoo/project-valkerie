@@ -42,7 +42,7 @@ jobs:
           run: npm run deploy:release
   
         - name: Deploy to Develop
-          if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+          if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
           run: npm run deploy:development
   
         - name: Deploy to gh-pages

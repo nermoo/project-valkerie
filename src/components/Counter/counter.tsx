@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import styles from './counter.module.less'
 
-const counter = () => {
-  const [count, setCount] = useState(0);
+const Counter: React.FC = () => {
+  const [count, setCount] = useState<number>(0);
 
   return (
     <div className={styles.counterCrd}>
@@ -13,4 +13,4 @@ const counter = () => {
   )
 }
 
-export default counter;
+export default Counter;
