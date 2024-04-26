@@ -8,6 +8,7 @@ const Counter: React.FC = () => {
     <div className={styles.counterCrd}>
     <button onClick={() => setCount((count) => count + 1)}>
       counteeeee {count}
+      this is homepage
     </button>
   </div>
   )
