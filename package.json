@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy:release": "echo 'Deploying for release' && npm run build && gh-pages -b main -d dist",
-    "deploy:development": "echo 'Deploying for development' && npm run build && gh-pages -b dev -d build",
+    "deploy:development": "echo 'Deploying for development' && npm run build && gh-pages -b dev -d dist",
     "deploy:github-pages": "echo 'Deploying for GitHub Pages' && npm run build && gh-pages -d dist"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "less-loader": "^12.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
     "serve": "^14.2.1"
   },
   "devDependencies": {
