@@ -1,14 +1,16 @@
 import React,{ useState } from 'react'
 import Navbar from '../../components/Navbar/navbar';
+import Counter from '../../components/Counter/counter';
 
 import styles from './homepage.module.less'
 
-const Counter: React.FC = () => {
+const HomePage: React.FC = () => {
   const [count, setCount] = useState<number>(0);
 
   return (
     <>
     <Navbar/>
+    <Counter/>
     <div className={styles.counterCrd}>
     <button onClick={() => setCount((count) => count + 1)}>
       count {count}
@@ -18,4 +20,4 @@ const Counter: React.FC = () => {
   )
 }
 
-export default Counter;
+export default HomePage;
