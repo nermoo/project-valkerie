@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
     const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
     return (
-        <Row className='navbar'>
+        <Row className='navbar bg-black'>
             <Col span={8}>
             <div className='logo'><ReadOutlined/></div>
             </Col>

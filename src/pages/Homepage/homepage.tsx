@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
     <Navbar/>
     <Counter/>
     <div className={styles.counterCrd}>
-    <button onClick={() => setCount((count) => count + 1)}>
+    <button className='text-3xl' onClick={() => setCount((count) => count + 1)}>
       count {count}
     </button>
   </div>
