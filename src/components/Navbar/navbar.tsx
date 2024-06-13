@@ -40,11 +40,6 @@ const Navbar: React.FC<NavbarProps> = () => {
         isloggedin?
         dispatch(logout()):dispatch(login()) // Dispatch login action
       };
-      // const options = [
-      //   { value: 'Burns Bay Road' },
-      //   { value: 'Downing Street' },
-      //   { value: 'Wall Street' },
-      // ];
 
       const onSelect = (value: string) => {
         console.log('onSelect', value);
