@@ -7,32 +7,45 @@ import { useSelector,useDispatch } from 'react-redux';
 // import {RootState} from '../../store/rootReducer';
 import { login, logout } from '../../slices/authSlice';
 import { useGetResultsQuery } from '../../queries/navSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 interface NavbarProps{
     activeTab?:boolean
 }
 
+interface AutoCompleteOption {
+  value: string;
+  title: string;
+  year: string;
+  type: string;
+  poster: string;
+  imdbId: string;
+}
+
+
 const {Search } = Input
 const Navbar: React.FC<NavbarProps> = () => {
 
-  const transformApiResponse = (data: { Search: any[]; }) => {
+  const transformApiResponse = (data:{ Search: any[]; }): AutoCompleteOption[] => {
     return data?.Search?.map(item => ({
       value: item.Title,  // `value` is required by AutoComplete
       title: item.Title,  // Add other properties if needed
       year: item.Year,
       type: item.Type,
       poster: item.Poster,
+      imdbId:item.imdbID
     }));
   };
     const [searchStrnig,setSearchString] = useState<string>('');
     const dispatch = useDispatch();
-    const isloggedin = useSelector((state:any)=>state.auth.isLoggedIn)
+    const isloggedin = useSelector((state:any)=>state.auth.isLoggedIn);
+    const navigate = useNavigate();
     const { data, error, isLoading } = useGetResultsQuery(searchStrnig, {
       skip: !searchStrnig, 
     })
-    console.log(data?.Search,isLoading);
-    const options:any = data ? transformApiResponse(data) : [];
+    console.log(data?.Search,isLoading,error);
+    const options:AutoCompleteOption[] = data ? transformApiResponse(data) : [];
     
 
     console.log( isloggedin);
@@ -41,20 +54,25 @@ const Navbar: React.FC<NavbarProps> = () => {
         dispatch(logout()):dispatch(login()) // Dispatch login action
       };
 
-      const onSelect = (value: string) => {
-        console.log('onSelect', value);
-      };
-      console.log(searchStrnig);
+    const onSelect = (value: string,option: AutoCompleteOption) => {
+      console.log('onSelect', value, option);
+      navigate(`/${option.imdbId}`)
+    };
 
-      useEffect(()=>{
+    const handleClear=()=>{
+      setSearchString(''); // this needs to be changed not working
+    }
+    console.log(searchStrnig);
 
-      },[searchStrnig])
+    useEffect(()=>{
+
+    },[searchStrnig])
       
     
 
     const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
     return (
-        <Row className='navbar'>
+        <Row className='navbar my-4'>
             <Col span={8}>
             <div className='logo'><ReadOutlined/></div>
             </Col>
@@ -66,10 +84,11 @@ const Navbar: React.FC<NavbarProps> = () => {
             style={{ width: 300 }}
             options={options}
             onSelect={onSelect}
+            onClear={handleClear}
             defaultOpen={false}
             // onSearch={handleSearch}
             filterOption={(inputValue, option) =>
-                option!.Title?.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+              (option as AutoCompleteOption).title?.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
               }
               notFoundContent={
                 <div>no contnt</div>
