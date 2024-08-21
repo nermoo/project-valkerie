@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React from 'react'
 import { useSelector,useDispatch } from 'react-redux';
 import { login, logout } from '../../slices/authSlice';
 
@@ -6,7 +6,6 @@ import { login, logout } from '../../slices/authSlice';
 import styles from './counter.module.less'
 
 const Counter: React.FC = () => {
-  const [count, setCount] = useState<number>(0);
 
   const dispatch = useDispatch();
   const isloggedin = useSelector((state:any)=>state.auth.isLoggedIn)

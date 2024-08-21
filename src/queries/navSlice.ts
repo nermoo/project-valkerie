@@ -4,9 +4,9 @@ const searchApi = AppApi.injectEndpoints({
   endpoints: (builder) =>({
     getResults: builder.query<any,string>({
         query:(searchTerm: string)=>({
-            url: '',
+            url: 'search',
+            method:'GET',
             params: {
-                apikey: '81a651ff',
                 s: searchTerm,
               },
         }),
