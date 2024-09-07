@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Input, Row, AutoComplete } from 'antd';
+import { Col, Input, Row, AutoComplete, Space, Avatar } from 'antd';
 import type { SearchProps } from 'antd/es/input/Search';
-import { ReadOutlined } from '@ant-design/icons';
+import { ReadOutlined, UserOutlined } from '@ant-design/icons';
 
 import { useSelector,useDispatch } from 'react-redux';
 // import {RootState} from '../../store/rootReducer';
 import { login, logout } from '../../slices/authSlice';
 import { useGetResultsQuery } from '../../queries/navSlice';
 import { useNavigate } from 'react-router-dom';
+
+import styles from './navbar.module.less';
 
 
 interface NavbarProps{
@@ -72,16 +74,16 @@ const Navbar: React.FC<NavbarProps> = () => {
 
     const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
     return (
-        <Row className='navbar my-4'>
+        <Row className='navbar my-4 bg-transparent'>
             <Col span={8}>
-            <div className='logo'><ReadOutlined/></div>
+            <div className='logo ml-9'><ReadOutlined/></div>
             </Col>
             <Col span={8}>
 
-            <div className='search-bar'>
+            <div >
             <AutoComplete
+            className={styles.searchbar}
             popupMatchSelectWidth={252}
-            style={{ width: 300 }}
             options={options}
             onSelect={onSelect}
             onClear={handleClear}
@@ -95,21 +97,26 @@ const Navbar: React.FC<NavbarProps> = () => {
               }
             size="large"
             >
-                <Search placeholder="input search text" allowClear onChange={e=>setSearchString(e.target.value)} onSearch={onSearch} style={{ width: 'auto' }} />
+                <Search placeholder="input search text" allowClear onChange={e=>setSearchString(e.target.value)} onSearch={onSearch} />
             </AutoComplete>
             </div>
             </Col>
-            <Col span={8}>
-
-            <div className='login-btn'>
-                <button onClick={handleLogin}>{isloggedin ? 'Logout' : 'Login'}</button>
-                {/* {isloggedin ? 'Logout' : 'Login'} */}
-            </div>
-            </Col>
-
+            <Space size={30} align='center' className='ml-auto mr-9'>
+              <div className='navLink'>
+                  <button onClick={handleLogin}>Categories</button>
+              </div>
+              <div className='navLink'>
+                  <button onClick={handleLogin}>Recommended</button>
+              </div>
+              <div className='navLink'>
+                  <button onClick={handleLogin}>News</button>
+              </div> 
+              <div className='login-btn'>
+                  {/* <button onClick={handleLogin}>{isloggedin ? 'Logout' : 'Login'}</button> */}
+                  <Avatar icon={<UserOutlined />} />
+              </div>
+            </Space>
         </Row>
-        // <div className='navbar'>
-        // </div>
     )
 }
 
