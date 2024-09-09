@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // import { Carousel } from 'antd';
 import { Carousel, Typography, Tag, Rate, Button, Space } from 'antd';
 
@@ -6,16 +6,6 @@ import styles from './carousel.module.less';
 
 const { Paragraph } = Typography;
 
-const contentStyle: React.CSSProperties = {
-  marginTop: 0,
-  color: '#fff',
-  height: '800px',
-  lineHeight: '160px',
-  textAlign: 'center',
-//   background: `url('./back.jpg')`,
-  backgroundSize: 'cover',
-  zIndex: 1,
-};
 
 const ImgCarousel: React.FC = () => {
 
@@ -31,7 +21,7 @@ const ImgCarousel: React.FC = () => {
     {
       title: "Deadpool II",
       genres: ["Action", "Comedy", "Adventure"],
-      rating: 4.5,
+      rating: 3.5,
       description: "This is a brief description of Deadpool II.",
       posterUrl: "https://example.com/poster2.jpg",
     },
@@ -45,14 +35,6 @@ const ImgCarousel: React.FC = () => {
   ];
 
   const [currentMovie, setCurrentMovie] = useState(movies[0]);
-  const [animationClass, setAnimationClass] = useState('');
-
-
-//   const onChange = (currentSlide: number) => {
-//     setCurrentMovie(movies[currentSlide]);
-//     console.log(currentSlide);
-//   };
-
   const [isFading, setIsFading] = useState(false);
 
   const onChange = (currentSlide: number) => {
@@ -60,13 +42,13 @@ const ImgCarousel: React.FC = () => {
     setTimeout(() => {
       setCurrentMovie(movies[currentSlide]);
       setIsFading(false);
-    }, 500); // Match duration of animation
+    }, 100);
   };
 
   return (
     <div className={styles.carouselWrapper}> 
       <div className={styles.gradientOverlay}>
-      <Space direction="vertical" align='start' size="middle" className={`${styles.movieInfo} ${isFading ? styles.fadeOut : ''} absolute bottom-20 left-12 `}>
+      <Space direction="vertical" align='start' size="middle" className={`${isFading ? styles.fadeOut : styles.movieInfo} absolute bottom-20 left-12 `}>
 
           {/* Movie Title */}
           <Typography className={`${styles.movieTitle} text-slate-50`}>
