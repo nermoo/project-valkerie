@@ -73,8 +73,9 @@ const Navbar: React.FC<NavbarProps> = () => {
     
 
     const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
+    
     return (
-        <Row className='navbar my-4 bg-transparent'>
+        <Row className= {`${styles.navbar} my-4`}>
             <Col span={8}>
             <div className='logo ml-9'><ReadOutlined/></div>
             </Col>
@@ -83,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <div >
             <AutoComplete
             className={styles.searchbar}
-            popupMatchSelectWidth={252}
+            // popupMatchSelectWidth={'auto'}
             options={options}
             onSelect={onSelect}
             onClear={handleClear}
@@ -97,7 +98,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               }
             size="large"
             >
-                <Search placeholder="input search text" allowClear onChange={e=>setSearchString(e.target.value)} onSearch={onSearch} />
+                <Search className={styles.searchfld} placeholder="input search text" allowClear onChange={e=>setSearchString(e.target.value)} onSearch={onSearch} />
             </AutoComplete>
             </div>
             </Col>

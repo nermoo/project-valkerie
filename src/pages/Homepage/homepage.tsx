@@ -1,5 +1,6 @@
 import React,{ useState } from 'react'
 import AppLayout from '../../layout/appLayout';
+import ImgCarousel from './../../components/carousel/carousel';
 
 import styles from './homepage.module.less'
 
@@ -8,11 +9,7 @@ const HomePage: React.FC = () => {
 
   return (
     <AppLayout>
-      <div className={styles.counterCrd}>
-        <button className='text-3xl' onClick={() => setCount((count) => count + 1)}>
-          count {count}
-        </button>
-      </div>
+      <ImgCarousel/>
     </AppLayout>
   )
 }
