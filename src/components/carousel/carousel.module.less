@@ -13,6 +13,19 @@
     position: relative; /* Ensures the carousel is relative for the overlay */
     z-index: 1;
   }
+
+  .carouselItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+  }
+  
+//   .posterImage {
+//     max-width: 100%;
+//     max-height: 100%;
+//     object-fit: cover;
+//   }
   
   .gradientOverlay {
     position: absolute;
@@ -24,14 +37,29 @@
     z-index: 2; /* Overlay is above carousel content */
   }
 
-  .movieInfo {
-    max-width: 500px;
-    margin-bottom: 20px;
-  }
-
   .movieTitle{
     color: white !important;
     font-size: 80px !important;
   }
+
+  .tag{
+    background: transparent;
+    border: 1px solid rgb(255, 255, 255);
+    color: white;
+    border-radius: 10px;
+  }
   
+  .fadeOut {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+
+  .movieInfo {
+    position: absolute;
+    bottom: 20px;
+    left: 12px;
+    z-index: 2;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 1;
+  }
   
