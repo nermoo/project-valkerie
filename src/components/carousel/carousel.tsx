@@ -83,7 +83,7 @@ const ImgCarousel: React.FC = () => {
         
         {movies.map((movie, index) => (
           <div key={index} className={styles.carouselItem}>
-          <img src='./back.jpg' className={styles.posterImage} />
+          <img alt={movie.title} src='./back.jpg' className={styles.posterImage} />
           </div>
         ))}
       </Carousel>
