@@ -4,7 +4,7 @@ const searchApi = AppApi.injectEndpoints({
   endpoints: (builder) =>({
     getResults: builder.query<any,string>({
         query:(searchTerm: string)=>({
-            url: 'search',
+            url: '/v1/search',
             method:'GET',
             params: {
                 s: searchTerm,
